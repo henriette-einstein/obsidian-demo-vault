@@ -1,0 +1,38 @@
+{
+  "settings": {
+    "migrated": 4,
+    "iconPacksPath": ".obsidian/icons",
+    "fontSize": 16,
+    "emojiStyle": "none",
+    "iconColor": null,
+    "recentlyUsedIcons": [
+      "LiTags",
+      "LiCog",
+      "LiSparkles",
+      "LiBookOpen",
+      "LiLibrary"
+    ],
+    "recentlyUsedIconsSize": 5,
+    "rules": [],
+    "extraMargin": {
+      "top": 0,
+      "right": 4,
+      "bottom": 0,
+      "left": 0
+    },
+    "iconInTabsEnabled": false,
+    "iconInTitleEnabled": false,
+    "iconInFrontmatterEnabled": false,
+    "iconsBackgroundCheckEnabled": false,
+    "iconsInNotesEnabled": true,
+    "iconIdentifier": ":"
+  },
+  "Home.md": "LiHome",
+  "00 Inbox": "LiInbox",
+  "10 Calendar": "LiCalendar",
+  "40 Sources": "LiBookOpen",
+  "50 Highlights": "LiSparkles",
+  "90 System": "LiCog",
+  "30 Library": "LiLibrary",
+  "20 Tags": "LiTags"
+}
