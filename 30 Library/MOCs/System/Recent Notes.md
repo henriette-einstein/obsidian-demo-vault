@@ -1,5 +1,6 @@
 ---
 tags:
+  - system
   - Type/MOC
 label: Recently created notes
 description: New notes added the last 5 days

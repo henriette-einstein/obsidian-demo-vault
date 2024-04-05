@@ -1,9 +1,11 @@
 ---
 tags:
   - Type/Note
-  - Category/Medium
-  - Category/Obsidian
 created: 2024-03-10
+categories:
+  - "[[Medium Posts]]"
+  - "[[Obsidian]]"
+published: 2024-03-12
 ---
 # **Navigating the Depths of Your Digital Brain: Optimizing Obsidian with Tag Pages and Folder Notes**
 ![[MOCs.webp]]

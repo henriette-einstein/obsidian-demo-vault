@@ -1,6 +1,6 @@
 ---
 tags:
-  - Type/Daily
+  - Type/Cal/Daily
 created: "{{date:YYYY-MM-DD}}"
 ---
 << [[{{date-1d:YYYY-MM-DD}}|{{date-1d:dddd, MMMM Do YYYY}}]]  |  [[{{date+1d:YYYY-MM-DD}}|{{date+1d:dddd, MMMM Do YYYY}}]]  >>

@@ -5,5 +5,6 @@ tags:
 label: "{{title}}"
 description: 
 created: "{{date}}"
+categories:
 ---
 # [[{{title}}]]

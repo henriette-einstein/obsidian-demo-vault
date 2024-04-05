@@ -1,16 +1,15 @@
 ---
-up: "[[Categories]]"
+up: "[[20 Atlas]]"
 tags:
-  - Type/Tagpage
+  - Type/Category
 label: "{{title}}"
 description: 
 created: "{{date}}"
-aliases:
 ---
-# [[Categories]] > [[{{title}}]]
+# [[20 Atlas]] > [[{{title}}]]
 ## Notes
 ```dataview
 list from !"90 System"
-where econtains(file.etags, this.aliases[0])
+where econtains(categories, [[]])
 sort file.name
 ```

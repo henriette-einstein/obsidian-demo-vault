@@ -1,5 +1,5 @@
 ---
-up: "[[Types]]"
+up: "[[30 Library]]"
 label: MOCs
 description: Maps of Content and Index Pages
 tags:

@@ -1,7 +1,7 @@
 ---
 up: "[[Home]]"
 tags:
-  - Type/MOC
+  - Type/Section
 label: Calendar
 description: Periodic notes
 created: 2024-03-07

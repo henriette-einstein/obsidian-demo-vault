@@ -25,14 +25,14 @@
     "iconInFrontmatterEnabled": false,
     "iconsBackgroundCheckEnabled": false,
     "iconsInNotesEnabled": true,
-    "iconIdentifier": ":"
+    "iconIdentifier": ":",
+    "iconsInLinksEnabled": true
   },
-  "Home.md": "LiHome",
   "00 Inbox": "LiInbox",
   "10 Calendar": "LiCalendar",
   "40 Sources": "LiBookOpen",
   "50 Highlights": "LiSparkles",
   "90 System": "LiCog",
   "30 Library": "LiLibrary",
-  "20 Tags": "LiTags"
+  "20 Atlas": "LiTags"
 }

@@ -1,5 +1,5 @@
 ---
-up: "[[Types]]"
+up: "[[30 Library]]"
 tags:
   - Type/Tagpage
 label: Notes

@@ -4,13 +4,13 @@
   "obsidian-hider",
   "homepage",
   "obsidian-icon-folder",
-  "cmdr",
   "dataview",
   "folder-notes",
   "obsidian-sortable",
   "periodic-notes",
-  "calendar",
   "obsidian-image-gallery",
   "tag-wrangler",
-  "obsidian-languagetool-plugin"
+  "obsidian-languagetool-plugin",
+  "calendar",
+  "cmdr"
 ]

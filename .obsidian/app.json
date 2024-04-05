@@ -1,10 +1,13 @@
 {
   "readableLineLength": false,
   "alwaysUpdateLinks": true,
-  "showInlineTitle": false,
+  "showInlineTitle": true,
   "spellcheckDictionary": [
     "Dataview",
     "frontmatter",
     "frontmatter"
-  ]
+  ],
+  "newFileLocation": "folder",
+  "newFileFolderPath": "00 Inbox",
+  "attachmentFolderPath": "00 Inbox"
 }

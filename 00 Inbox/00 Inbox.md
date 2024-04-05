@@ -1,7 +1,7 @@
 ---
 up: "[[Home]]"
 tags:
-  - Type/MOC
+  - Type/Section
 created: 2024-03-06
 label: Inbox
 description: Newly captured notes that are not organized yet
@@ -15,6 +15,6 @@ banner: "[[Inbox.png]]"
 # [[Home]] > [[00 Inbox|Inbox]]
 
 ```dataview
-table created from "00 Inbox" and !"00 Inbox/00 Inbox"
+table created from "00 Inbox" and ![[]]
 sort created
 ```

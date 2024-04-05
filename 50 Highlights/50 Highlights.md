@@ -1,7 +1,7 @@
 ---
 up: "[[Home]]"
 tags:
-  - Type/Tagpage
+  - Type/Section
 created: 2024-03-06
 key: Highlights
 aliases:

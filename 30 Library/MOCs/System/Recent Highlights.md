@@ -1,12 +1,10 @@
 ---
-up: 
 tags:
+  - system
   - Type/MOC
 created: 2024-03-07
 label: Recently imported highlights
 description: Highlights imported from Readwise the last 5 days
-aliases:
-  - Recently imported Highlights
 ---
 # [[Recent Highlights|Recently imported Highlights]]
 

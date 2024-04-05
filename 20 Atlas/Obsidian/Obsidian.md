@@ -1,21 +1,19 @@
 ---
-up: "[[Categories]]"
+up: "[[20 Atlas]]"
 tags:
-  - Type/Tagpage
+  - Type/Category
 label: Obsidian
 description: Notes on the Obsidian application
 created: 2024-03-05
-aliases:
-  - "#Category/Obsidian"
 cssclasses:
   - banner-image
 ---
 
 > [!banner-image] ![[Application.webp|py-20]]
-# [[Categories]] > [[Obsidian]]
+# [[20 Atlas]] > [[Obsidian]]
 ## Notes
 ```dataview
 list from !"90 System"
-where econtains(file.etags, this.aliases[0])
+where econtains(categories, [[]])
 sort file.name
 ```

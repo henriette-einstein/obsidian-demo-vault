@@ -1,5 +1,6 @@
 ---
 tags:
+  - system
   - Type/MOC
 created: 2024-03-07
 aliases:
