@@ -6,11 +6,11 @@
     "emojiStyle": "none",
     "iconColor": null,
     "recentlyUsedIcons": [
-      "LiTags",
-      "LiCog",
       "LiSparkles",
-      "LiBookOpen",
-      "LiLibrary"
+      "LiLibrary",
+      "LiCalendar",
+      "LiInbox",
+      "LiComputer"
     ],
     "recentlyUsedIconsSize": 5,
     "rules": [],
@@ -21,18 +21,20 @@
       "left": 0
     },
     "iconInTabsEnabled": false,
-    "iconInTitleEnabled": false,
+    "iconInTitleEnabled": true,
     "iconInFrontmatterEnabled": false,
     "iconsBackgroundCheckEnabled": false,
     "iconsInNotesEnabled": true,
     "iconIdentifier": ":",
-    "iconsInLinksEnabled": true
+    "iconsInLinksEnabled": true,
+    "debugMode": false,
+    "iconInFrontmatterFieldName": "icon",
+    "iconColorInFrontmatterFieldName": "iconColor"
   },
   "00 Inbox": "LiInbox",
   "10 Calendar": "LiCalendar",
-  "40 Sources": "LiBookOpen",
-  "50 Highlights": "LiSparkles",
   "90 System": "LiCog",
   "30 Library": "LiLibrary",
-  "20 Atlas": "LiTags"
+  "20 Atlas": "LiTags",
+  "40 Highlights": "LiSparkles"
 }

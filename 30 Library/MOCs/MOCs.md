@@ -12,7 +12,7 @@ cssclasses:
 banner: "[[MOCs.webp]]"
 ---
 > [!banner-image] ![[MOCs.webp]]
-# [[Types]] > [[MOCs]]
+# [[30 Library]] > [[MOCs]]
 ## Notes
 ```dataview
 table description from !"90 System"

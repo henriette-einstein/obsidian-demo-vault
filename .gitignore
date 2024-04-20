@@ -1,8 +1,9 @@
 # Mac Stuff
 .DS_Store
 
-# My stuff. Exclude license key from git
+# My stuff. Exclude license keys from git
 .obsidian/plugins/obsidian-languagetool-plugin/data.json
+.obsidian/plugins/copilot/data.json
 
 # Logs
 logs

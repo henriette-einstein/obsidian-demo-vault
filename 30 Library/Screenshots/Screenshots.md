@@ -3,7 +3,9 @@ up: "[[30 Library]]"
 tags:
   - Type/Folder
 created: 2024-04-04
+description: Screenshots in this vault
 ---
+
 ```dataviewjs
 const skipFolders = false
 const path = dv.current().file.folder
@@ -39,11 +41,11 @@ async function getFileInfo(file) {
 		ret.basename = file.basename
 		ret.extension = file.extension
 		ret.link = dv.fileLink(file.path)
-		ret.icon = fileIcon
+		ret.icon = ":LiFile:"
 	} else {
 		ret.sortname = "00-"+ret.name
 		ret.link = ret.name
-		ret.icon = folderIcon
+		ret.icon = ":LiFolder:"
 		ret.size = "--"
 	}
 	return ret

@@ -18,3 +18,9 @@ banner: "[[Inbox.png]]"
 table created from "00 Inbox" and ![[]]
 sort created
 ```
+
+## See also
+- [[Recent Notes|Recently created notes]], 
+- [[Recent Highlights|Recently imported Highlights]]
+- [[Untyped Notes|Untyped Notes]] 
+- [[Uncategorized Notes|Uncategorized Notes]]

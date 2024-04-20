@@ -13,6 +13,7 @@ aliases:
 ```dataview
 table "[[" + dateformat(file.cday,"yyyy-MM-dd") + "]]" as "Created" from !"90 System" WHERE (file.ctime >= date(today) - dur(5 day))
 sort file.ctime
+limit 30
 ```
 
 # See also

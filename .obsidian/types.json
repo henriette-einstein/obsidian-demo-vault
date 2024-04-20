@@ -3,6 +3,10 @@
     "aliases": "aliases",
     "cssclasses": "multitext",
     "tags": "tags",
-    "categories": "multitext"
+    "categories": "multitext",
+    "collections": "multitext",
+    "types": "multitext",
+    "start": "date",
+    "end": "date"
   }
 }

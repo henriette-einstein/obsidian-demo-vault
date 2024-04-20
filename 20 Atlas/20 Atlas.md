@@ -10,7 +10,8 @@ cssclasses:
 banner: "[[Categories.webp]]"
 ---
 > [!banner-image] ![[Categories.webp]]
-# [[Home]] > [[20 Atlas|Categories]]
+# [[Home]] > [[20 Atlas|Atlas]]
 
+- [[History]]
 - [[Medium Posts]]
 - [[Obsidian]]

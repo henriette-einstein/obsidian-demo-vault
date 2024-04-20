@@ -11,7 +11,6 @@ cssclasses:
 
 > [!banner-image] ![[Application.webp|py-20]]
 # [[20 Atlas]] > [[Obsidian]]
-## Notes
 ```dataview
 list from !"90 System"
 where econtains(categories, [[]])

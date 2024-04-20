@@ -1,0 +1,41 @@
+{
+  "language": "en",
+  "searchLimit": 10,
+  "thumbnailWidth": 300,
+  "defaultNotePath": "/",
+  "templates": [
+    {
+      "name": "Default",
+      "templateString": "[{title}]({url})",
+      "createNote": false,
+      "customPath": "",
+      "useTemplateFile": false,
+      "templateFilePath": ""
+    },
+    {
+      "name": "Description",
+      "templateString": "# [[{title}]]\n{thumbnail}\n{intro}\n\n## See also\n- [{title} on Wikipedia]({url})\n",
+      "createNote": false,
+      "customPath": "",
+      "useTemplateFile": false,
+      "templateFilePath": ""
+    },
+    {
+      "name": "Image right",
+      "templateString": "> [!blank|float-right-small]\n> {thumbnail}\n\n{intro}\n\n## See also\n- [{title} on Wikipedia]({url})\n\n",
+      "createNote": false,
+      "customPath": "",
+      "useTemplateFile": false,
+      "templateFilePath": ""
+    }
+  ],
+  "placeCursorInfrontOfInsert": false,
+  "autoInsertSingleResponseQueries": false,
+  "prioritizeArticleTitle": false,
+  "cleanupIntros": true,
+  "openArticleInFullscreen": false,
+  "openArticlesInBrowser": false,
+  "openCreatedNotes": false,
+  "overrideFiles": false,
+  "showedSurfingMessage": false
+}
