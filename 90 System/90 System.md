@@ -1,15 +1,12 @@
 ---
-up: "[[Home]]"
-tags:
-  - Type/Category
-label: 90 System
-description: 
+label: System
+description: Obsidian Configuration and Templates
 created: 2024-04-03
+banner: "[[System.png]]"
+cssclasses:
+  - banner-image
 ---
+
+> [!banner-image] ![[System.png]]
+
 # [[90 System|System]]
-## Notes
-```dataview
-list from !"90 System"
-where econtains(categories, [[]])
-sort file.name
-```

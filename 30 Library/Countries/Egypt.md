@@ -1,12 +1,11 @@
 ---
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+type: "[[Countries]]"
 location: 26.8206,30.8025
 flag: https://upload.wikimedia.org/wikipedia/commons/f/fe/Flag_of_Egypt.svg
 created: 2024-04-18
 capital: "[[Cairo]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 
 # Egypt

@@ -4,22 +4,48 @@
     "type": "split",
     "children": [
       {
-        "id": "38d9f2ffaa0d169f",
+        "id": "dcfbd77aca8f11a0",
         "type": "tabs",
         "children": [
           {
-            "id": "574fa044112a82ea",
+            "id": "4ad9cc5715dd4aa8",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "README.md",
-                "mode": "preview",
-                "source": true
+                "file": "40 Sources/Books/The Modern Middle East - A History/The Modern Middle East - A History.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c8d387c82f36f463",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "40 Sources/Books/The Modern Middle East - A History/The Modern Middle East - A History.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "c982d0a73871a2af",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "30 Library/MOCs/M - Religion.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -48,7 +74,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:Type/Country",
+                "query": "tag:#Tagpage",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -96,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "30 Library/MOCs/M - Religion.md"
               }
             }
           },
@@ -118,7 +144,7 @@
             "state": {
               "type": "file-properties",
               "state": {
-                "file": "README.md"
+                "file": "30 Library/MOCs/M - Religion.md"
               }
             }
           },
@@ -136,7 +162,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "30 Library/MOCs/M - Religion.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -153,7 +179,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "30 Library/MOCs/M - Religion.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -165,19 +191,34 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "README.md",
+                "file": "30 Library/MOCs/M - Religion.md",
                 "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
+                  "collapse-filter": false,
+                  "search": "-tag:#Type/System/Tagpage ",
+                  "localJumps": 3,
                   "localBacklinks": true,
                   "localForelinks": true,
                   "localInterlinks": false,
                   "showTags": false,
                   "showAttachments": false,
                   "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
+                  "collapse-color-groups": false,
+                  "colorGroups": [
+                    {
+                      "query": "tag:#Type/MOC  ",
+                      "color": {
+                        "a": 1,
+                        "rgb": 14048348
+                      }
+                    },
+                    {
+                      "query": "[\"types\":\"Countries\"]",
+                      "color": {
+                        "a": 1,
+                        "rgb": 14069084
+                      }
+                    }
+                  ],
                   "collapse-display": true,
                   "showArrow": false,
                   "textFadeMultiplier": 0,
@@ -188,14 +229,14 @@
                   "repelStrength": 10,
                   "linkStrength": 1,
                   "linkDistance": 250,
-                  "scale": 1.041379743992411,
+                  "scale": 0.7478272121605974,
                   "close": true
                 }
               }
             }
           },
           {
-            "id": "d374cca79e76d779",
+            "id": "fad2e4c525d88d7a",
             "type": "leaf",
             "state": {
               "type": "copilot-chat-view",
@@ -206,72 +247,74 @@
       }
     ],
     "direction": "horizontal",
-    "width": 608.5,
-    "collapsed": true
+    "width": 495.5
   },
   "left-ribbon": {
     "hiddenItems": {
-      "switcher:Open quick switcher": false,
-      "graph:Open graph view": false,
-      "canvas:Create new canvas": false,
-      "daily-notes:Open today's daily note": false,
-      "templates:Insert template": false,
-      "command-palette:Open command palette": false,
+      "switcher:Schnellauswahl öffnen": false,
+      "graph:Graphen-Ansicht öffnen": false,
+      "canvas:Neuen Canvas erstellen": false,
+      "daily-notes:Heutige Notiz öffnen": false,
+      "templates:Vorlage einfügen": false,
+      "command-palette:Befehlspalette öffnen": false,
       "homepage:Open homepage": false,
       "obsidian-map-view:Open map view": false,
       "wikipedia-search:Open Article": false,
       "copilot:Copilot Chat": false,
+      "obsidian-importer:Open Importer": false,
+      "smart-second-brain:Open S2B Chat": false,
       "periodic-notes:Open today": false
     }
   },
-  "active": "574fa044112a82ea",
+  "active": "c982d0a73871a2af",
   "lastOpenFiles": [
-    "30 Library/Cities/Abu Dhabi.md",
-    "30 Library/Countries/United Arab Emirates.md",
-    "30 Library/Cities/Dubai.md",
-    "90 System/Copilot Templates/Copilot City.md",
-    "30 Library/Cities/Kuwait City.md",
-    "30 Library/Cities/Istanbul.md",
-    "30 Library/Cities/Aqaba.md",
-    "30 Library/Cities/Cities.md",
-    "30 Library/Cities/Tehran.md",
-    "30 Library/Cities/Kirkuk.md",
-    "30 Library/Cities/Damascus.md",
-    "30 Library/Cities/Riyadh.md",
-    "30 Library/Cities/Cairo.md",
-    "30 Library/Countries/Kuwait.md",
-    "30 Library/Cities/Basra.md",
-    "30 Library/Locations/Masjed Soleyman.md",
-    "30 Library/Cities/Beirut.md",
-    "30 Library/Countries/Saudi Arabia.md",
-    "90 System/Copilot Templates/Copilot Country.md",
-    "90 System/Templates/Type - Event Template.md",
-    "90 System/Templates/Type - Post Template.md",
-    "30 Library/Images/Blog.webp",
-    "30 Library/Countries/Yemen.md",
-    "00 Inbox/Untitled.md",
-    "30 Library/Posts/Chunking and Sequencing History.md",
-    "30 Library/Posts/From Dates to Durations.md",
-    "30 Library/Posts/Traverse your Obsidian Vault with Tagpages and Folder Notes.md",
-    "90 System/Templates/Utils",
-    "30 Library/Screenshots/My Map View Template.png",
-    "90 System/Templates/Map View",
-    "30 Library/Screenshots/Saudi Arabia 2.png",
-    "30 Library/Screenshots/Map View Oil Producing.png",
-    "30 Library/Screenshots/Map View Filters.png",
-    "30 Library/Screenshots/Map View Custom Icons.png",
-    "30 Library/Screenshots/Map View Codeblock 1.png",
-    "30 Library/Screenshots/Map View Codeblock 2.png",
-    "30 Library/Screenshots/Map view in command Palette.png",
-    "30 Library/Images/Map of Middle East on Wall.jpeg",
-    "30 Library/Zettel",
-    "90 System/Copilot Templates",
-    "GetCity",
-    "30 Library/Countries/Ottoman Empire 1908 GeoJSON.json",
-    "30 Library/Timelines",
-    "30 Library/Literature Notes",
-    "30 Library/Books/The Modern Middle East - A History",
-    "00 Desktop/Inbox",
+    "30 Library/Concepts/C - Religeous Concepts/C - Religeous Concepts.md",
+    "30 Library/MOCs/M - Religion.md",
+    "30 Library/Concepts/C - Religeous Concepts/Sultan.md",
+    "30 Library/Concepts/C - Religeous Concepts/Muslim.md",
+    "30 Library/Concepts/C - Religeous Concepts/Islam.md",
+    "30 Library/Concepts/C - Religeous Concepts/Five Pillars of Islam.md",
+    "30 Library/People/John Fisher.md",
+    "30 Library/Concepts/C - Religeous Concepts",
+    "30 Library/People/C - Soldier/C - Soldier.md",
+    "30 Library/People/C - Politician/C - Politician.md",
+    "30 Library/People/George Bernard Reynolds.md",
+    "30 Library/People/Winston Churchill.md",
+    "30 Library/MOCs/C - History MOCs/C - History MOCs.md",
+    "30 Library/People/C - Soldier",
+    "30 Library/People/C - Politician",
+    "30 Library/MOCs/C - Oil MOCs/M - Pioneering Oil Discoveries in the Middle East.md",
+    "30 Library/MOCs/C - Oil MOCs/M - Oil Producing Countries in the Middle East.md",
+    "30 Library/MOCs/C - Oil MOCs/M - Oil Industry.md",
+    "30 Library/MOCs/C - Oil MOCs/M - Oil in the Middle East.md",
+    "30 Library/MOCs/C - Oil MOCs/M - Most important Refineries in the Middle East.md",
+    "30 Library/MOCs/C - Oil MOCs/M - Most important Oilfields in the Middle East.md",
+    "30 Library/MOCs/C - Oil MOCs/M - History of the Oil Industry.md",
+    "30 Library/MOCs/C - Middle East MOCs/M - Countries in the Middle East.md",
+    "30 Library/MOCs/C - Middle East MOCs/M - Cities in the Middle East.md",
+    "30 Library/MOCs/C - History MOCs/M - History of the Middle East.md",
+    "30 Library/MOCs/C - History MOCs/M - Historical Eras.md",
+    "30 Library/Tags/T - Bagdad Railway.md",
+    "30 Library/Tags/T - Pinned.md",
+    "30 Library/Queries/Queries.md",
+    "30 Library/Tags",
+    "10 Calendar/2024/08",
+    "10 Calendar/2024",
+    "30 Library/Queries",
+    "30 Library/Canvases/Historical Eras.canvas",
+    "40 Sources/Articles",
+    "Chats",
+    "HTML import",
+    "30 Library/Images/Banner Images/Application.webp",
+    "30 Library/Images/Banner Images/Articles.webp",
+    "30 Library/Images/Banner Images/Refinery.jpeg",
+    "30 Library/Images/Banner Images/Blog.webp",
+    "30 Library/Images/Screenshots/My Map View Template.png",
+    "30 Library/Images/Screenshots/Saudi Arabia 2.png",
+    "30 Library/Images/Screenshots/Map View Oil Producing.png",
+    "30 Library/Images/Screenshots/Map View Filters.png",
+    "30 Library/Images/Screenshots/Map View Custom Icons.png",
+    "30 Library/Images/Screenshots/Map View Codeblock 1.png",
     "30 Library/Canvases/Test Canvas.canvas"
   ]
 }

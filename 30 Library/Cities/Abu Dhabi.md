@@ -1,8 +1,10 @@
 ---
-tags: Type/City
-country: "[[United Arab Emirates]]"
+type: "[[Cities]]"
 created: 2024-04-20
+country: "[[United Arab Emirates]]"
 location: 24.4539,54.3773
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # [[Abu Dhabi]]

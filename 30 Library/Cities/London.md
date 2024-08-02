@@ -1,10 +1,9 @@
 ---
-up: "[[Cities]]"
-tags:
-  - Type/City
+type: "[[Cities]]"
 created: 2024-04-06
-categories: 
+mocs: 
 location: 51.4893335,-0.14405508452768728
+country: "[[United Kingdom]]"
 ---
 # [[London]]
 

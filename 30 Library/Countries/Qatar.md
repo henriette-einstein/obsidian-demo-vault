@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-types:
-  - "[[Countries]]"
-tags:
-  - Type/Country
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+created: 2024-04-18
 location: 25.3548,51.1839
 flag: https://upload.wikimedia.org/wikipedia/commons/6/65/Flag_of_Qatar.svg
 capital: "[[Doha]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 
 # Qatar

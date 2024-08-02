@@ -1,11 +1,8 @@
 ---
 up: "[[Countries]]"
-tags:
-  - Type/Country
-categories:
-  - "[[History of the Middle East]]"
-types:
-  - "[[Countries]]"
+type: "[[Countries]]"
+mocs:
+  - "[[M - History of the Middle East]]"
 created: 2024-04-12
 capital: "[[Istanbul]]"
 flag: https://upload.wikimedia.org/wikipedia/commons/8/8e/Flag_of_the_Ottoman_Empire_%281844–1922%29.svg

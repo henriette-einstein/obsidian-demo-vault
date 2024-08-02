@@ -1,7 +1,5 @@
 ---
-up: "[[Cities]]"
-tags:
-  - Type/City
+type: "[[Cities]]"
 created: 2024-04-06
 location: 49.7933723,9.9309779
 country: "[[Germany]]"

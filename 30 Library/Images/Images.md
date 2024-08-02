@@ -1,15 +1,11 @@
 ---
 up: "[[30 Library]]"
-tags:
-  - Type/Tagpage
 label: Images
 description: Images used in this vault
 created: 2024-04-19
 ---
-# [[30 Library]] > [[Images]]
+# [[30 Library|Library]] > [[Images]]
 
 
-```img-gallery
-path: "30 Library/Images"
-```
-
+- [[Banner Images]]
+- [[Screenshots]]

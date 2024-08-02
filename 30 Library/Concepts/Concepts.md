@@ -1,17 +1,13 @@
 ---
 up: "[[30 Library]]"
-tags:
-  - Type/Tagpage
 label: Concepts
 description: Definitions and Concepts
 created: 2024-04-11
-aliases:
-  - "#Type/Concept"
 ---
-# [[30 Library]] > [[Concepts]]
-## Notes
+# [[30 Library|Library]] > [[Concepts]]
+
 ```dataview
-list from !"90 System"
-where econtains(file.etags, this.aliases[0])
+table collections, mocs from !"90 System" and !outgoing([[]])
+where type = [[]]
 sort file.name
 ```

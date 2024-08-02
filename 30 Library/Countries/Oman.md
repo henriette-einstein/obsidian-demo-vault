@@ -1,9 +1,9 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+created: 2024-04-18
+mocs:
+  - "[[M - Countries in the Middle East]]"
 location: 21.4735,55.9754
 flag: https://upload.wikimedia.org/wikipedia/commons/d/dd/Flag_of_Oman.svg
 capital: "[[Muscat]]"

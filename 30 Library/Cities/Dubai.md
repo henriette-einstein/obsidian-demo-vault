@@ -1,8 +1,10 @@
 ---
-tags: Type/City
+type: "[[Cities]]"
 country: "[[United Arab Emirates]]"
 created: 2024-04-20
 location: 25.276987,55.296249
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # [[Dubai]]

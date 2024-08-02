@@ -29,13 +29,14 @@
       "templateFilePath": ""
     }
   ],
-  "placeCursorInfrontOfInsert": false,
   "autoInsertSingleResponseQueries": false,
+  "autoSearchNoteTitle": false,
   "prioritizeArticleTitle": false,
   "cleanupIntros": true,
   "openArticleInFullscreen": false,
   "openArticlesInBrowser": false,
   "openCreatedNotes": false,
   "overrideFiles": false,
-  "showedSurfingMessage": false
+  "showedSurfingMessage": false,
+  "placeCursorInfrontOfInsert": false
 }

@@ -1,12 +1,8 @@
 ---
-up: "[[People]]"
-tags:
-  - Type/Person
-types:
-  - "[[People]]"
+type: "[[People]]"
 created: 2024-04-09
-categories:
-  - "[[History of the Oil Industry]]"
+mocs:
+  - "[[M - History of the Oil Industry]]"
 born: 1849-10-11
 died: 1917-05-01
 country: "[[United Kingdom]]"

@@ -1,10 +1,10 @@
 ---
-up: "[[Cities]]"
-tags:
-  - Type/City
+type: "[[Cities]]"
 created: 2024-04-16
 location: 33.5138,36.2765
 country: "[[Syria]]"
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # Damascus

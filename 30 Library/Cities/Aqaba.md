@@ -1,9 +1,12 @@
 ---
+type: "[[Cities]]"
+created: 2024-04-16
 location: 29.5267,35.0078
 country: "[[Jordan]]"
-tags:
-  - Type/City
-created: 2024-04-16
+types:
+  - "[[Cities]]"
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # Aqaba

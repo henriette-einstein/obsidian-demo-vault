@@ -1,12 +1,8 @@
 ---
-up: "[[Concepts]]"
-tags:
-  - Type/Organization
-types:
-  - "[[Organizations]]"
-categories:
-  - "[[History of the Middle East]]"
+type: "[[Organizations]]"
 created: 2024-04-12
+mocs:
+  - "[[M - History of the Middle East]]"
 ---
 # [[League of Nations]]
 

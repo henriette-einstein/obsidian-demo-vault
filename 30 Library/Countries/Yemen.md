@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 location: 15.5527,48.5164
 flag: https://upload.wikimedia.org/wikipedia/commons/8/89/Flag_of_Yemen.svg
 capital: "[[Sana'a]]"
+created: 2024-04-18
 ---
 
 # Country Profile: Yemen
@@ -90,7 +90,7 @@ Yemen faces profound challenges, including the devastating impact of the ongoing
 
 1. [Yemen on Wikipedia](https://en.wikipedia.org/wiki/Yemen)
 2. [Yemen on CIA World Factbook](https://www.cia.gov/the-world-factbook/countries/yemen/)
-3. [[Oil Producing Countries in the Middle East]]
+3. [[M - Oil Producing Countries in the Middle East]]
 
 ## References
 

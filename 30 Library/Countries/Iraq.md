@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
 location: 33.2232,43.6793
 flag: https://upload.wikimedia.org/wikipedia/commons/f/f6/Flag_of_Iraq.svg
 capital: "[[Baghdad]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
+created: 2024-04-18
 ---
 
 # [[Iraq]]

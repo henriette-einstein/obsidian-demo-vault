@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+created: 2024-02-04
 location: 26.0667,50.5577
 flag: https://upload.wikimedia.org/wikipedia/commons/2/2c/Flag_of_Bahrain.svg
 capital: "[[Manama]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 
 # Bahrain

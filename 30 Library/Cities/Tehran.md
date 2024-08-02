@@ -1,11 +1,10 @@
 ---
-tags:
-  - Type/City
-types:
-  - "[[Cities]]"
-country: "[[Iran]]"
+type: "[[Cities]]"
 created: 2024-04-20
+country: "[[Iran]]"
 location: 35.6892,51.3890
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # [[Tehran]]

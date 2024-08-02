@@ -1,11 +1,7 @@
 ---
-up: "[[Concepts]]"
-tags:
-  - Type/Concept
-types:
-  - "[[Concepts]]"
-categories:
-  - "[[History of the Middle East]]"
+type: "[[Concepts]]"
+mocs:
+  - "[[M - History of the Middle East]]"
 created: 2024-04-11
 ---
 # [[Balfour Declaration]]

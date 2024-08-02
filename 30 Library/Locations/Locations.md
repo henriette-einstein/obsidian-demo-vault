@@ -1,17 +1,18 @@
 ---
 up: "[[30 Library]]"
-tags:
-  - Type/Tagpage
 label: Locations
 description: Notes about Locations
 created: 2024-04-11
-aliases:
-  - "#Type/Location"
 ---
-# [[30 Library]] > [[Locations]]
+# [[30 Library|Library]] > [[Locations]]
+
+## Collections
+- [[C - Oilfields]]
+- [[C - Refineries]]
 ## Notes
 ```dataview
-table "["+file.name+"](geo:"+location+")" as "Location on Map" from !"90 System"
-where econtains(file.etags, this.aliases[0])
+table collections, "["+file.name+"](geo:"+location+")" as "Location on Map" 
+from !"90 System" and !outgoing([[]])
+where type = [[]]
 sort file.name
 ```

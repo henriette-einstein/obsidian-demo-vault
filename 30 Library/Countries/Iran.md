@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-types:
-  - "[[Countries]]"
-tags:
-  - Type/Country
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+created: 2024-04-18
 location: 32.4279,53.6880
 flag: https://upload.wikimedia.org/wikipedia/commons/c/ca/Flag_of_Iran.svg
 capital: "[[Tehran]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 # [[Iran]]
 
@@ -35,9 +35,10 @@ The 20th century was a period of significant change for Iran, beginning with the
 
 ## Important Events
 
-- **1908**: Discovery of oil in Masjed Soleyman.
-- **1951-1953**: Nationalization of the oil industry and the subsequent coup d'état against Prime Minister Mohammad Mosaddegh.
-- **1979**: Islamic Revolution, leading to the establishment of the Islamic Republic.
+- **1908**: Discovery of oil in [[Masjed Soleyman]].
+- **1912**: [[Abadan Refinery]] established by the [[Anglo-Persian Oil Company|APOC]]
+- **1951-1953**: Nationalization of the oil industry and the subsequent coup d'état against Prime Minister [[Mohammad Mosaddegh]].
+- **1979**: [[Islamic Revolution]], leading to the establishment of the Islamic Republic.
 - **1980-1988**: Iran-Iraq War, a devastating conflict that had significant impacts on Iran's economy and society.
 - **2015**: Iran Nuclear Deal (JCPOA) agreement with world powers.
 
@@ -52,7 +53,7 @@ The 20th century was a period of significant change for Iran, beginning with the
 
 ### History of Oil Discovery and Development
 
-- **First Discovery**: 1908, in Masjed Soleyman.
+- **First Discovery**: 1908, in [[Masjed Soleyman]].
 - **Major Oil Fields**: Ahvaz, Marun, Gachsaran
 - **Production Statistics**:
   - **Oil Production**: Approximately 3.5 million barrels per day, as of 2021
@@ -76,7 +77,7 @@ Iran faces challenges related to international sanctions, which have impacted it
 ## Maps and Diagrams
 
 ```mapview
-{"name":"Default","mapZoom":4,"centerLat":32.39851580247402,"centerLng":53.65722656250001,"query":"path:\"30 Library/Countries/Iran.md\"","chosenMapSource":0,"showLinks":false,"linkColor":"red"}
+{"name":"Default","mapZoom":4,"centerLat":31.769915749874112,"centerLng":53.43454022435672,"query":"path:\"30 Library/Countries/Iran.md\"","chosenMapSource":0,"lock":true,"showLinks":false,"linkColor":"red"}
 ```
 
 ## See also

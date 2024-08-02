@@ -1,12 +1,8 @@
 ---
-up: 
-tags:
-  - Type/Concept
-types:
-  - "[[Concepts]]"
-categories:
-  - "[[History of the Middle East]]"
+type: "[[Concepts]]"
 created: 2024-04-12
+mocs:
+  - "[[M - History of the Middle East]]"
 ---
 # [[League of Nations Mandates]]
 

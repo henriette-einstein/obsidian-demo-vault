@@ -1,17 +1,13 @@
 ---
 up: "[[30 Library]]"
-tags:
-  - Type/Tagpage
 label: Companies
 description: Notes about Companies
 created: 2024-04-10
-aliases:
-  - "#Type/Company"
 ---
-# [[30 Library]] > [[Companies]]
+# [[Companies]]
 
 ```dataview
-list from !"90 System"
-where econtains(file.etags, this.aliases[0])
+table country from !"90 System" and !outgoing([[]])
+where type = [[]]
 sort file.name
 ```

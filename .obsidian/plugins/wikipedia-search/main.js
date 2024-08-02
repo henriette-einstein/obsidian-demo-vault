@@ -22,15 +22,13 @@ var __copyProps = (to, from, except, desc) => {
   return to;
 };
 var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __publicField = (obj, key, value) => {
-  __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
-  return value;
-};
+var __publicField = (obj, key, value) => __defNormalProp(obj, typeof key !== "symbol" ? key + "" : key, value);
 
 // src/main.ts
 var main_exports = {};
 __export(main_exports, {
-  default: () => WikipediaSearchPlugin
+  default: () => WikipediaSearchPlugin,
+  wikilist: () => wikilist
 });
 module.exports = __toCommonJS(main_exports);
 var import_obsidian13 = require("obsidian");
@@ -380,41 +378,65 @@ var languages = {
   zu: "isiZulu"
 };
 
-// src/utils/wikipediaAPI.ts
+// src/utils/toolsAPI.ts
 var import_obsidian = require("obsidian");
-async function getArticles(query, languageCode, limit) {
+function sortResponsesByTitle(titles, responses) {
+  return responses.sort((a, b) => titles.indexOf(a.title) - titles.indexOf(b.title));
+}
+function titlesToURLParameter(titles) {
+  return titles.map((title) => encodeURIComponent(title)).join("|");
+}
+async function fetchData(url) {
+  const response = await (0, import_obsidian.requestUrl)(url).catch((e) => {
+    return null;
+  });
+  if (!response) return null;
+  if (response.status !== 200) {
+    return null;
+  }
+  try {
+    return response.json;
+  } catch (e) {
+    return null;
+  }
+}
+
+// src/API/wikipedia.ts
+async function getWikipediaArticles(query, languageCode, limit) {
   const url = getAPIBaseURL(languageCode) + `&action=opensearch&profile=fuzzy&redirects=resolve&limit=${limit != null ? limit : 10}&search=` + encodeURIComponent(query);
   const response = await fetchData(url);
-  return response[1].map((title, index) => ({ title, url: response[3][index] }));
+  if (!response) return null;
+  return response[1].map((title, index) => ({
+    title,
+    url: response[3][index],
+    languageCode
+  }));
 }
-async function getArticleDescriptions(titles, languageCode) {
+async function getWikipediaArticleDescriptions(titles, languageCode) {
   const url = getAPIBaseURL(languageCode) + "&action=query&prop=description&titles=" + titlesToURLParameter(titles);
   const response = await fetchData(url);
-  if (!response.query)
-    return [];
+  if (!response.query) return null;
   return sortResponsesByTitle(titles, Object.values(response.query.pages)).map(
     (page) => page.description || null
   );
 }
-async function getArticleIntros(titles, languageCode, cleanup) {
+async function getWikipediaArticleIntros(titles, languageCode, cleanup) {
   const url = getAPIBaseURL(languageCode) + "&action=query&prop=extracts&exintro&explaintext&titles=" + titlesToURLParameter(titles);
   const response = await fetchData(url);
-  if (!response.query)
-    return [];
+  if (!response.query) return null;
   return sortResponsesByTitle(titles, Object.values(response.query.pages)).map((page) => {
     var _a;
     const extract = (_a = page.extract.trim()) != null ? _a : null;
     if (extract && cleanup) {
-      return extract.replaceAll(/{\\displaystyle [^\n]+}/g, (text) => "$" + text.slice(15, -1).trim() + "$").replaceAll("\n ", "").replaceAll(/  \S  /g, "").replaceAll(/  +/g, " ").replaceAll("\n ", "\n").replaceAll(" ,", ",").replaceAll(" :", ":").replaceAll("`", "\\`");
+      return extract.replaceAll(/{\\displaystyle [^\n]+}/g, (text) => "$" + text.slice(15, -1).trim() + "$").replaceAll("$\n  \n", "$").replaceAll(/\n  \n    \n      \n[^\$]*      \n    \n    \$/g, "$").replaceAll("  ", " ").replaceAll("`", "\\`");
     }
     return extract;
   });
 }
-async function getArticleThumbnails(titles, languageCode) {
+async function getWikipediaArticleThumbnails(titles, languageCode) {
   const url = getAPIBaseURL(languageCode) + "&action=query&prop=pageimages&piprop=original|name&pilicense=any&titles=" + titlesToURLParameter(titles);
   const response = await fetchData(url);
-  if (!response.query)
-    return null;
+  if (!response.query) return null;
   return sortResponsesByTitle(titles, Object.values(response.query.pages)).map(
     (page) => {
       var _a, _b;
@@ -425,44 +447,50 @@ async function getArticleThumbnails(titles, languageCode) {
 function getAPIBaseURL(languageCode) {
   return `https://${languageCode}.wikipedia.org/w/api.php?format=json`;
 }
-function sortResponsesByTitle(titles, responses) {
-  return responses.sort((a, b) => titles.indexOf(a.title) - titles.indexOf(b.title));
-}
-function titlesToURLParameter(titles) {
-  return titles.map((title) => encodeURIComponent(title)).join("|");
-}
-async function fetchData(url) {
-  var _a;
-  const response = (_a = await (0, import_obsidian.requestUrl)(url).catch((e) => {
-    console.error(e);
-    return null;
-  })) == null ? void 0 : _a.json;
-  if (!response)
-    return null;
-  return response;
+
+// src/API/mediawiki.ts
+async function getWikiArticles(query, languageCode, wiki, limit) {
+  const url = `https://${languageCode}.${wiki.toLowerCase()}.org/w/api.php?format=json&action=opensearch&profile=fuzzy&redirects=resolve&limit=${limit != null ? limit : 10}&search=` + encodeURIComponent(query);
+  const response = await fetchData(url);
+  if (!response) return null;
+  return response[1].map((title, index) => ({
+    title,
+    url: response[3][index],
+    languageCode
+  }));
 }
 
 // src/utils/searchModal.ts
 var SearchModal = class extends import_obsidian2.SuggestModal {
-  constructor(app2, settings, editor) {
+  constructor(app2, settings, wiki, editor) {
     super(app2);
     __publicField(this, "settings");
     __publicField(this, "editor");
+    __publicField(this, "wiki");
     this.settings = settings;
+    this.wiki = wiki;
     this.editor = editor;
-    this.setPlaceholder("Search Wikipedia...");
+    this.setPlaceholder(`Search ${wiki}...`);
   }
   onOpen() {
+    var _a;
+    super.onOpen();
+    if (this.settings.autoSearchNoteTitle) {
+      const fileName = (_a = this.app.workspace.getActiveFile()) == null ? void 0 : _a.basename;
+      if (fileName && fileName != "") this.inputEl.value = fileName;
+    }
     if (this.editor) {
-      this.inputEl.value = this.editor.getSelection();
+      const selection = this.editor.getSelection();
+      if (selection.trim() != "") this.inputEl.value = selection;
     }
     super.updateSuggestions();
   }
   renderSuggestion(article, el) {
     el.createEl("div", { text: article.title });
-    el.createEl("small", {
-      text: article.description || article.url.slice(8)
-    });
+    if ("description" in article)
+      el.createEl("small", {
+        text: article.description || article.url.slice(8)
+      });
   }
   async getSuggestions(query) {
     var _a, _b, _c;
@@ -485,45 +513,58 @@ var SearchModal = class extends import_obsidian2.SuggestModal {
       return [];
     }
     this.emptyStateText = "No results found.";
-    const searchResponses = await getArticles(query, languageCode, this.settings.searchLimit);
-    const descriptions = await getArticleDescriptions(
-      (_c = searchResponses == null ? void 0 : searchResponses.map((a) => a.title)) != null ? _c : [],
-      languageCode
-    );
-    if (!searchResponses || !descriptions) {
-      this.emptyStateText = "An error occurred... Go check the logs and create a bug report!";
+    let searchResponses = null;
+    if (this.wiki === "Wikipedia") {
+      searchResponses = await getWikipediaArticles(query, languageCode, this.settings.searchLimit);
+    } else {
+      searchResponses = await getWikiArticles(query, languageCode, this.wiki, this.settings.searchLimit);
+    }
+    if (searchResponses == null) {
+      this.emptyStateText = `Couldn't fetch any search results. Are you sure that ${this.wiki} supports this language?`;
+      return [];
+    } else if (searchResponses.length === 0) {
       return [];
     }
     if (this.settings.autoInsertSingleResponseQueries && searchResponses.length === 1) {
       this.close();
-      this.onChooseSuggestion({
-        title: searchResponses[0].title,
-        url: searchResponses[0].url,
-        description: descriptions[0],
-        languageCode
-      });
+      this.onChooseSuggestion(searchResponses[0]);
     }
-    return searchResponses.map((article, index) => ({
-      title: article.title,
-      url: article.url,
-      description: descriptions[index],
-      languageCode
-    }));
+    let descriptions = [];
+    if (this.wiki == "Wikipedia") {
+      descriptions = await getWikipediaArticleDescriptions(
+        (_c = searchResponses == null ? void 0 : searchResponses.map((a) => a.title)) != null ? _c : [],
+        languageCode
+      );
+    }
+    if (descriptions == null) {
+      new import_obsidian2.Notice("Couldn't fetch any article descriptions.");
+      descriptions = new Array(searchResponses.length).fill(null);
+    }
+    if (descriptions.length === 0) {
+      return searchResponses;
+    } else {
+      return searchResponses.map((article, index) => ({
+        description: descriptions[index],
+        ...article
+      }));
+    }
   }
 };
 
 // src/utils/templateModal.ts
 var import_obsidian3 = require("obsidian");
 var TemplateModal = class extends import_obsidian3.SuggestModal {
-  constructor(app2, settings, editor, article, noteTemplatesOnly = false) {
+  constructor(app2, settings, editor, article, wiki, noteTemplatesOnly = false) {
     super(app2);
     __publicField(this, "settings");
     __publicField(this, "editor");
     __publicField(this, "article");
+    __publicField(this, "wiki");
     __publicField(this, "noteTemplatesOnly");
     this.settings = settings;
     this.editor = editor;
     this.article = article;
+    this.wiki = wiki;
     this.noteTemplatesOnly = noteTemplatesOnly;
     this.setPlaceholder("Pick a template...");
   }
@@ -555,28 +596,36 @@ var TemplateModal = class extends import_obsidian3.SuggestModal {
 
 // src/utils/generateInsert.ts
 var import_obsidian4 = require("obsidian");
-async function generateInsert(settings, article, templateString, selection) {
-  var _a, _b, _c, _d, _e;
+async function generateInsert(settings, article, wiki, content, selection) {
+  var _a, _b, _c, _d, _e, _f;
   const title = settings.prioritizeArticleTitle || selection === "" ? article.title : selection;
-  let insert = templateString.replaceAll("{title}", title).replaceAll("{url}", article.url).replaceAll("{description}", (_a = article.description) != null ? _a : "").replaceAll("{language}", languages[article.languageCode]).replaceAll("{languageCode}", article.languageCode);
-  if (templateString.includes("{intro}")) {
-    const intro = (_c = (_b = await getArticleIntros([article.title], settings.language, settings.cleanupIntros)) == null ? void 0 : _b[0]) != null ? _c : null;
-    insert = insert.replaceAll("{intro}", intro != null ? intro : "");
-    if (!intro)
-      new import_obsidian4.Notice("Could not fetch the articles introduction.");
+  let insert = content.replaceAll("{title}", title).replaceAll("{url}", article.url).replaceAll("{language}", languages[article.languageCode]).replaceAll("{languageCode}", article.languageCode);
+  if (wiki == "Wikipedia") {
+    if (content.includes("{description}")) {
+      const description = (_b = (_a = await getWikipediaArticleDescriptions([article.title], settings.language)) == null ? void 0 : _a[0]) != null ? _b : null;
+      insert = insert.replaceAll("{description}", description != null ? description : "");
+      if (!description) new import_obsidian4.Notice("Could not fetch the articles description.");
+    }
+    if (content.includes("{intro}")) {
+      const intro = (_d = (_c = await getWikipediaArticleIntros([article.title], settings.language, settings.cleanupIntros)) == null ? void 0 : _c[0]) != null ? _d : null;
+      insert = insert.replaceAll("{intro}", intro != null ? intro : "");
+      if (!intro) new import_obsidian4.Notice("Could not fetch the articles introduction.");
+    }
+    if (content.includes("{thumbnail}") || content.includes("{thumbnailUrl}")) {
+      const thumbnailUrl = (_f = (_e = await getWikipediaArticleThumbnails([article.title], settings.language)) == null ? void 0 : _e[0]) != null ? _f : null;
+      insert = insert.replaceAll(
+        "{thumbnail}",
+        thumbnailUrl ? `![${article.title} Thumbnail${settings.thumbnailWidth ? ` | ${settings.thumbnailWidth}` : ""}](${thumbnailUrl})` : ""
+      ).replaceAll("{thumbnailUrl}", thumbnailUrl != null ? thumbnailUrl : "");
+      if (!thumbnailUrl) new import_obsidian4.Notice("Could not fetch the articles thumbnail.");
+    }
+  } else {
+    insert = insert.replaceAll("{description}", "").replaceAll("{intro}", "").replaceAll("{thumbnail}", "").replaceAll("{thumbnailUrl}", "");
   }
-  if (templateString.includes("{thumbnail}") || templateString.includes("{thumbnailUrl}")) {
-    const thumbnailUrl = (_e = (_d = await getArticleThumbnails([article.title], settings.language)) == null ? void 0 : _d[0]) != null ? _e : null;
-    insert = insert.replaceAll(
-      "{thumbnail}",
-      thumbnailUrl ? `![${article.title} Thumbnail${settings.thumbnailWidth ? ` | ${settings.thumbnailWidth}` : ""}](${thumbnailUrl})` : ""
-    ).replaceAll("{thumbnailUrl}", thumbnailUrl != null ? thumbnailUrl : "");
-    if (!thumbnailUrl)
-      new import_obsidian4.Notice("Could not fetch the articles thumbnail.");
-  }
-  if (templateString.includes("{description}") && !article.description)
-    new import_obsidian4.Notice("The article has no description.");
-  return insert;
+  let cursorPosition = insert.search("{cursor}");
+  cursorPosition = cursorPosition != -1 ? cursorPosition : null;
+  insert = insert.replaceAll("{cursor}", "");
+  return { insert, cursorPosition };
 }
 
 // src/utils/createNote.ts
@@ -611,30 +660,31 @@ async function createNoteInFolder(app2, title, content, folderPath, overrideExis
 var LinkArticleModal = class extends SearchModal {
   async onChooseSuggestion(article) {
     if (this.settings.templates.length > 1) {
-      new LinkArticleTemplateModal(app, this.settings, this.editor, article).open();
+      new LinkArticleTemplateModal(this.app, this.settings, this.editor, article, this.wiki).open();
     } else {
-      insertLink(app, this.editor, this.settings, article, this.settings.templates[0]);
+      linkArticle(this.app, this.editor, this.settings, article, this.wiki, this.settings.templates[0]);
     }
   }
 };
 var LinkArticleTemplateModal = class extends TemplateModal {
   async onChooseSuggestion(template) {
-    insertLink(app, this.editor, this.settings, this.article, template);
+    linkArticle(this.app, this.editor, this.settings, this.article, this.wiki, template);
   }
 };
-async function insertLink(app2, editor, settings, article, template) {
+async function linkArticle(app2, editor, settings, article, wiki, template) {
   var _a, _b;
   let templateString = template.templateString;
-  if (template.useTemplateFile && template.createNote) {
-    const templateFile = app2.vault.getAbstractFileByPath(template.templateFilePath);
-    if (!templateFile || !(templateFile instanceof import_obsidian6.TFile)) {
-      new import_obsidian6.Notice(`Aborting! Template file '${template.templateFilePath}' not found!`);
-      return;
-    }
-    templateString = await app2.vault.read(templateFile);
-  }
-  let insert = await generateInsert(settings, article, templateString, editor.getSelection());
+  const selection = editor.getSelection();
   if (template.createNote) {
+    if (template.useTemplateFile) {
+      const templateFile = app2.vault.getAbstractFileByPath(template.templateFilePath);
+      if (!templateFile || !(templateFile instanceof import_obsidian6.TFile)) {
+        new import_obsidian6.Notice(`Aborting! Template file '${template.templateFilePath}' not found!`);
+        return;
+      }
+      templateString = await app2.vault.read(templateFile);
+    }
+    const content = await generateInsert(settings, article, wiki, templateString, selection);
     let folderPath = template.customPath === "" ? settings.defaultNotePath : template.customPath;
     if (folderPath === createNoteInActiveNotesFolderMarker) {
       folderPath = ((_b = (_a = app2.workspace.getActiveFile()) == null ? void 0 : _a.parent) == null ? void 0 : _b.path) || null;
@@ -645,15 +695,31 @@ async function insertLink(app2, editor, settings, article, template) {
         return;
       }
     }
-    const notePath = await createNoteInFolder(app2, article.title, insert, folderPath, settings.overrideFiles);
-    if (notePath == null)
-      return;
-    insert = `[[${notePath}|${settings.prioritizeArticleTitle || editor.getSelection() === "" ? article.title : editor.getSelection()}]]`;
+    const notePath = await createNoteInFolder(
+      app2,
+      article.title,
+      content.insert,
+      folderPath,
+      settings.overrideFiles
+    );
+    if (notePath == null) return;
+    editor.replaceSelection(
+      `[[${notePath}|${settings.prioritizeArticleTitle || selection === "" ? article.title : selection}]]`
+    );
+  } else {
+    const internalCursorMarker = "{cursorMarker}";
+    let content = editor.getValue();
+    content = content.substring(0, editor.posToOffset(editor.getCursor("from"))) + templateString + internalCursorMarker + content.substring(editor.posToOffset(editor.getCursor("to")));
+    const result = await generateInsert(settings, article, wiki, content, selection);
+    let newContent = result.insert;
+    let cursorPosition = result.cursorPosition;
+    if (cursorPosition == null) cursorPosition = newContent.search(internalCursorMarker);
+    newContent = newContent.replace(internalCursorMarker, "");
+    editor.setValue(newContent);
+    const cursorPos = editor.offsetToPos(cursorPosition);
+    editor.setCursor(cursorPos);
+    editor.scrollIntoView({ from: cursorPos, to: cursorPos }, true);
   }
-  const cursorPosition = editor.getCursor();
-  editor.replaceSelection(insert);
-  if (settings.placeCursorInfrontOfInsert)
-    editor.setCursor(cursorPosition);
 }
 
 // src/settings.ts
@@ -1618,8 +1684,7 @@ function flip(_ref) {
     };
     for (var _i = numberOfChecks; _i > 0; _i--) {
       var _ret = _loop(_i);
-      if (_ret === "break")
-        break;
+      if (_ret === "break") break;
     }
   }
   if (state.placement !== firstFittingPlacement) {
@@ -2259,8 +2324,7 @@ var TextInputSuggest = class {
   close() {
     this.app.keymap.popScope(this.scope);
     this.suggest.setSuggestions([]);
-    if (this.popper)
-      this.popper.destroy();
+    if (this.popper) this.popper.destroy();
     this.suggestEl.detach();
   }
 };
@@ -2334,8 +2398,8 @@ var DEFAULT_SETTINGS = {
   thumbnailWidth: NaN,
   defaultNotePath: "/",
   templates: [DEFAULT_TEMPLATE],
-  placeCursorInfrontOfInsert: false,
   autoInsertSingleResponseQueries: false,
+  autoSearchNoteTitle: false,
   prioritizeArticleTitle: false,
   cleanupIntros: true,
   openArticleInFullscreen: false,
@@ -2372,11 +2436,10 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
         await this.plugin.saveSettings();
       })
     );
-    new import_obsidian10.Setting(containerEl).setName("Search limit").setDesc("Maximum number of search results to show. (Between 1 and 500)").addText(
+    new import_obsidian10.Setting(containerEl).setName("Search limit").setDesc("Maximum number of search results to show. (1\u2264limit\u2264500)").addText(
       (text) => text.setPlaceholder("limit").setValue(this.settings.searchLimit ? this.settings.searchLimit.toString() : "").onChange(async (value) => {
         const parsed = parseInt(value);
-        if (parsed < 1 || parsed > 500)
-          return;
+        if (parsed < 1 || parsed > 500) return;
         this.settings.searchLimit = parsed;
         await this.plugin.saveSettings();
       })
@@ -2384,8 +2447,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
     new import_obsidian10.Setting(containerEl).setName("Thumbnail width").setDesc("The width of the thumbnails in pixels. (Leave empty to use the original size.)").addText(
       (text) => text.setPlaceholder("width").setValue(this.settings.thumbnailWidth ? this.settings.thumbnailWidth.toString() : "").onChange(async (value) => {
         const parsed = parseInt(value);
-        if (typeof parsed !== "number")
-          return;
+        if (typeof parsed !== "number") return;
         this.settings.thumbnailWidth = parsed;
         await this.plugin.saveSettings();
       })
@@ -2403,13 +2465,13 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       });
     });
     const templateSettings = new DocumentFragment();
-    templateSettings.createEl("span").innerHTML = "Templates (<a href='https://strangegirlmurph.github.io/obsidian-wikipedia-search/settings/#template-settings'>Guide</a>)";
+    templateSettings.createEl("span").innerHTML = "Templates (<a href='https://strangegirlmurph.github.io/obsidian-wikipedia-search/settings.html#template-settings'>Guide</a>)";
     new import_obsidian10.Setting(containerEl).setName(templateSettings).setHeading();
     this.addTemplateSettings(containerEl);
     new import_obsidian10.Setting(containerEl).setName("Workflow optimizations").setHeading();
-    new import_obsidian10.Setting(containerEl).setName("Cursor placement").setDesc("Whether or not the cursor is placed infront of the insert instead of after it.").addToggle(
-      (toggle) => toggle.setValue(this.settings.placeCursorInfrontOfInsert).onChange(async (value) => {
-        this.settings.placeCursorInfrontOfInsert = value;
+    new import_obsidian10.Setting(containerEl).setName("Auto-search note title").setDesc("Whether or not to automatically use the active notes title when searching for articles and nothing is selected.").addToggle(
+      (toggle) => toggle.setValue(this.settings.autoSearchNoteTitle).onChange(async (value) => {
+        this.settings.autoSearchNoteTitle = value;
         await this.plugin.saveSettings();
       })
     );
@@ -2422,7 +2484,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       })
     );
     new import_obsidian10.Setting(containerEl).setName("Use article title instead of selection").setDesc(
-      "When hyperlinking: Whether or not to use the articles title instead of the selected text for the '{title}' parameter of your template."
+      "When hyperlinking: Whether or not to use the articles title instead of the selected text for the '{title}' tag of your template."
     ).addToggle(
       (toggle) => toggle.setValue(this.settings.prioritizeArticleTitle).onChange(async (value) => {
         this.settings.prioritizeArticleTitle = value;
@@ -2464,7 +2526,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       })
     );
     new import_obsidian10.Setting(containerEl).setName("Feedback, bug reports and feature requests \u{1F33F}").setHeading();
-    const appendix = `<p style="border-top:1px solid var(--background-modifier-border); padding: 0.75em 0; margin: unset;">If you have any kind of feedback, please let me know! No matter how small! I also obsess a lot about small details. I want to make this plugin as useful as possible for everyone. I love to hear about your ideas for new features, all the bugs you found and everything that annoys you. Don't be shy! Just create an issue on <a href="https://github.com/StrangeGirlMurph/obsidian-wikipedia-search">GitHub</a> and I'll get back to you ASAP. ~ Murphy :)</p>
+    const appendix = `<p style="border-top:1px solid var(--background-modifier-border); padding: 0.75em 0; margin: unset;">If you have any kind of feedback, please let me know! No matter how small! I want to make this plugin as useful as possible for everyone and the only way I can improve this plugin for you is if you tell me about it. I love to hear about your ideas for new features, all the bugs you found and everything that annoys you. Don't be shy! I can also obsess a lot about small details. Just <a href="https://github.com/StrangeGirlMurph/obsidian-wikipedia-search/issues/new/choose">create an issue on GitHub</a> or <a href="mailto:work@murphy-in.space">write me an email</a> and I'll get back to you ASAP. ~ Murphy :)</p>
 		<p style="margin: unset;">PS: Wikipedia also has a dark mode for everyone with an account.</p>`;
     const div = containerEl.createEl("div");
     div.innerHTML = appendix;
@@ -2477,8 +2539,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       setting.controlEl.style.flexWrap = "wrap";
       setting.controlEl.style.justifyContent = "center";
       setting.addText((text) => {
-        if (isDefaultTemplate)
-          text.setDisabled(true);
+        if (isDefaultTemplate) text.setDisabled(true);
         return text.setPlaceholder("Name").setValue(isDefaultTemplate ? "Default Template" : template.name).onChange(async (value) => {
           template.name = value;
           await this.plugin.saveSettings();
@@ -2503,7 +2564,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       firstGroup.appendChild(setting.controlEl.children[0]);
       if (template.createNote) {
         setting.addSearch((search) => {
-          new FolderSuggest(app, search.inputEl);
+          new FolderSuggest(this.app, search.inputEl);
           search.setPlaceholder("custom note path").setValue(template.customPath).onChange(async (newFolder) => {
             template.customPath = newFolder;
             await this.plugin.saveSettings();
@@ -2527,7 +2588,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       }
       if (template.useTemplateFile && template.createNote) {
         setting.addSearch((search) => {
-          new FileSuggest(app, search.inputEl);
+          new FileSuggest(this.app, search.inputEl);
           search.setPlaceholder("template file path").setValue(template.templateFilePath).onChange(async (newFolder) => {
             template.templateFilePath = newFolder;
             await this.plugin.saveSettings();
@@ -2543,7 +2604,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
             "style",
             "white-space:pre;overflow-wrap:normal;overflow:hidden;resize:none;flex-grow:1;width:220px;"
           );
-          text.inputEl.setAttr("rows", "2");
+          text.inputEl.setAttr("rows", template.createNote ? "3" : "2");
           return text.setPlaceholder("template string").setValue(template.templateString).onChange(async (value) => {
             template.templateString = value;
             await this.plugin.saveSettings();
@@ -2551,8 +2612,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
         });
       }
       setting.addExtraButton((button) => {
-        if (isDefaultTemplate)
-          button.setDisabled(true);
+        if (isDefaultTemplate) button.setDisabled(true);
         button.extraSettingsEl.style.height = "min-content";
         return button.setTooltip("delete template").setIcon("minus").onClick(async () => {
           this.settings.templates.splice(i, 1);
@@ -2569,7 +2629,7 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
       (button) => button.setTooltip("add template").setIcon("plus").onClick(async () => {
         if (this.settings.templates.length == 21)
           return new import_obsidian10.Notice(
-            "Easy buddy... I need to stop you right there. You can only have up to 20 templates. It's for your own good! (I think) If you really need more come and talk to me on GitHub. If you convince me I'll let you have more.",
+            "Easy buddy... I need to stop you right there. You can only have up to 20 templates. It's for your own good! (I think) If you really need more write me. If you convince me I'll let you have more.",
             15e3
           );
         this.settings.templates.push({
@@ -2586,25 +2646,25 @@ var WikipediaSearchSettingTab = class extends import_obsidian10.PluginSettingTab
 // src/commands/openArticles.ts
 var import_obsidian11 = require("obsidian");
 var OpenArticleModal = class extends SearchModal {
-  constructor(plugin, settings) {
-    super(app, settings);
+  constructor(app2, settings, wiki, plugin) {
+    super(app2, settings, wiki);
     __publicField(this, "workspace");
     __publicField(this, "plugin");
-    this.workspace = app.workspace;
+    this.workspace = app2.workspace;
     this.plugin = plugin;
   }
   async onChooseSuggestion(article) {
     if (
       // @ts-expect-error undocumented
-      app.plugins.enabledPlugins.has("surfing") && !this.settings.openArticlesInBrowser && import_obsidian11.Platform.isDesktopApp
+      this.app.plugins.enabledPlugins.has("surfing") && !this.settings.openArticlesInBrowser && import_obsidian11.Platform.isDesktopApp
     ) {
-      app.workspace.getLeaf(this.settings.openArticleInFullscreen ? "tab" : "split").setViewState({
+      this.app.workspace.getLeaf(this.settings.openArticleInFullscreen ? "tab" : "split").setViewState({
         type: "surfing-view",
         active: true,
         state: { url: article.url }
       });
     } else if (!this.settings.showedSurfingMessage && import_obsidian11.Platform.isDesktopApp && !this.settings.openArticlesInBrowser) {
-      const modal = new import_obsidian11.Modal(app);
+      const modal = new import_obsidian11.Modal(this.app);
       modal.onClose = () => this.onChooseSuggestion(article);
       modal.titleEl.setText("Wikipedia Search plugin \u2665 Surfing plugin");
       modal.contentEl.innerHTML = `The Wikipedia Search plugin integrates with the amazing Surfing plugin to enable you to open Wikipedia articles directly inside of Obsidian! You just need to install and enable it. It has tons of awesome features and does the heavy lifting of loading the website itself in Obsidian. In this case the Wikipedia Search plugin just provides the search functionality. Using the Surfing plugin is completely optional but I highly recommend you check it out! Note: This will only be shown to you once but you can always find the information later in the README on GitHub as well. ~ Murphy :)<br><br>
@@ -2628,18 +2688,28 @@ var CreateArticleNoteModal = class extends SearchModal {
   async onChooseSuggestion(article) {
     const templates = this.settings.templates.filter((template) => template.createNote);
     if (templates.length > 1) {
-      new CreateArticleNoteTemplateModal(this.app, this.settings, this.editor, article, true).open();
+      new CreateArticleNoteTemplateModal(
+        this.app,
+        this.settings,
+        this.editor,
+        article,
+        this.wiki,
+        true
+      ).open();
     } else {
-      createArticleNote(this.app, this.settings, article, templates[0]);
+      createArticleNote(this.app, this.settings, article, this.wiki, templates[0]);
     }
   }
 };
 var CreateArticleNoteTemplateModal = class extends TemplateModal {
+  constructor(app2, settings, editor, article, wiki, noteTemplatesOnly = false) {
+    super(app2, settings, editor, article, wiki, noteTemplatesOnly);
+  }
   async onChooseSuggestion(template) {
-    createArticleNote(this.app, this.settings, this.article, template);
+    createArticleNote(this.app, this.settings, this.article, this.wiki, template);
   }
 };
-async function createArticleNote(app2, settings, article, template) {
+async function createArticleNote(app2, settings, article, wiki, template) {
   var _a, _b;
   let templateString = template.templateString;
   if (template.useTemplateFile) {
@@ -2660,16 +2730,31 @@ async function createArticleNote(app2, settings, article, template) {
       return;
     }
   }
-  const insert = await generateInsert(settings, article, templateString, "");
-  const filePath = await createNoteInFolder(app2, article.title, insert, folderPath, settings.overrideFiles);
-  if (!filePath)
-    return;
+  const result = await generateInsert(settings, article, wiki, templateString, "");
+  const filePath = await createNoteInFolder(
+    app2,
+    article.title,
+    result.insert,
+    folderPath,
+    settings.overrideFiles
+  );
+  if (!filePath) return;
   if (settings.openCreatedNotes) {
     app2.workspace.getLeaf(settings.openArticleInFullscreen ? "tab" : "split").openFile(app2.vault.getAbstractFileByPath(filePath));
   }
 }
 
 // src/main.ts
+var wikilist = [
+  "Wikipedia",
+  "Wiktionary",
+  "Wikibooks",
+  "Wikiquote",
+  "Wikiversity",
+  "Wikivoyage",
+  "Wikisource",
+  "Wikinews"
+];
 var WikipediaSearchPlugin = class extends import_obsidian13.Plugin {
   constructor() {
     super(...arguments);
@@ -2679,30 +2764,44 @@ var WikipediaSearchPlugin = class extends import_obsidian13.Plugin {
     console.log("loading wikipedia-search plugin");
     await this.loadSettings();
     this.addCommand({
-      id: "link-article",
-      name: "Link Article",
-      editorCallback: (editor) => {
-        new LinkArticleModal(this.app, this.settings, editor).open();
-      }
+      id: "link-wikipedia-article",
+      name: "Link Wikipedia Article",
+      editorCallback: (editor) => new LinkArticleModal(this.app, this.settings, "Wikipedia", editor).open()
     });
     this.addCommand({
-      id: "open-article",
-      name: "Open Article",
-      callback: () => new OpenArticleModal(this, this.settings).open()
+      id: "open-wikipedia-article",
+      name: "Open Wikipedia Article",
+      callback: () => new OpenArticleModal(this.app, this.settings, "Wikipedia", this).open()
     });
     this.addCommand({
-      id: "create-article-note",
-      name: "Create Article Note",
+      id: "create-wikipedia-article-note",
+      name: "Create Wikipedia Article Note",
       callback: () => {
         if (this.settings.templates.filter((template) => template.createNote).length === 0) {
           new import_obsidian13.Notice("To use this command you have to create a note template first!");
           return;
         }
-        new CreateArticleNoteModal(this.app, this.settings).open();
+        new CreateArticleNoteModal(this.app, this.settings, "Wikipedia").open();
       }
     });
     (0, import_obsidian13.addIcon)("wikipedia", wikipediaIcon);
-    this.addRibbonIcon("wikipedia", "Open Article", () => new OpenArticleModal(this, this.settings).open());
+    this.addRibbonIcon(
+      "wikipedia",
+      "Open Article",
+      () => new OpenArticleModal(this.app, this.settings, "Wikipedia", this).open()
+    );
+    for (const wiki of wikilist) {
+      this.addCommand({
+        id: `link-${wiki.toLowerCase()}-article`,
+        name: `Link ${wiki} Article`,
+        editorCallback: (editor) => new LinkArticleModal(this.app, this.settings, wiki, editor).open()
+      });
+      this.addCommand({
+        id: `open-${wiki.toLowerCase()}-article`,
+        name: `Open ${wiki} Article`,
+        callback: () => new OpenArticleModal(this.app, this.settings, wiki, this).open()
+      });
+    }
     this.addSettingTab(new WikipediaSearchSettingTab(this.app, this));
   }
   onunload() {
@@ -2714,8 +2813,7 @@ var WikipediaSearchPlugin = class extends import_obsidian13.Plugin {
         Object.assign(DEFAULT_TEMPLATE, { templateString: settings.defaultTemplate })
       );
       Object.keys(settings).forEach((key) => {
-        if (!(key in DEFAULT_SETTINGS))
-          delete settings[key];
+        if (!(key in DEFAULT_SETTINGS)) delete settings[key];
       });
     }
     this.settings = settings;

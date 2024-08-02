@@ -1,7 +1,9 @@
 ---
-tags: Type/City
-country: "[[Saudi Arabia]]"
+type: "[[Cities]]"
 created: 2024-04-20
+country: "[[Saudi Arabia]]"
+mocs:
+  - "[[M - Cities in the Middle East]]"
 location: 24.7136,46.6753
 ---
 

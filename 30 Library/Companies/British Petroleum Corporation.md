@@ -1,12 +1,13 @@
 ---
-up: 
-tags:
-  - Type/Company
-categories: 
+type: "[[Companies]]"
 created: 2024-04-10
+mocs:
+  - "[[M - Oil Industry]]"
+  - "[[M - History of the Oil Industry]]"
 aliases:
   - BP
   - British Petroleum
+country: "[[United Kingdom]]"
 ---
 # [[British Petroleum Corporation]]
 

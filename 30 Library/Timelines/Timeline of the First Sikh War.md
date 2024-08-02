@@ -1,12 +1,11 @@
 ---
-up: 
-tags:
-  - Type/Timeline
 label: Timeline of the First Sikh War
 description: 
 created: 2024-04-14
-categories: 
+mocs:
+  - "[[C - History MOCs]]"
 locations: ""
+type: "[[Timelines]]"
 ---
 # [[Timeline of the First Sikh War]]
 

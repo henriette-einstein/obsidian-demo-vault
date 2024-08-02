@@ -1,8 +1,10 @@
 ---
-tags: Type/City
-country: "[[Iraq]]"
+type: "[[Cities]]"
 created: 2024-04-20
+country: "[[Iraq]]"
 location: 35.4686,44.3922
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # [[Kirkuk]]

@@ -1,8 +1,10 @@
 ---
-tags: Type/City
+type: "[[Cities]]"
 country: "[[Egypt]]"
 created: 2024-04-20
 location: 30.0444,31.2357
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 
 # [[Cairo]]

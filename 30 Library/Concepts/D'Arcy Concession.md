@@ -1,12 +1,8 @@
 ---
-up: "[[Concepts]]"
-types:
-  - "[[Concepts]]"
-tags:
-  - Type/Concept
-categories:
-  - "[[History of the Oil Industry]]"
-  - "[[History of the Middle East]]"
+type: "[[Concepts]]"
+mocs:
+  - "[[M - History of the Oil Industry]]"
+  - "[[M - History of the Middle East]]"
 created: 2024-04-09
 ---
 # [[D'Arcy Concession]]

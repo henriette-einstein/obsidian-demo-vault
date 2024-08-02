@@ -1,7 +1,9 @@
 ---
-tags: Type/City
-country: "[[Iraq]]"
+type: "[[Cities]]"
 created: 2023-04-20
+mocs:
+  - "[[M - Cities in the Middle East]]"
+country: "[[Iraq]]"
 location: 30.5085,47.7838
 ---
 

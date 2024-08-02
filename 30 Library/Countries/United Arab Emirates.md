@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+created: 2024-04-18
 location: 23.4241,53.8478
 flag: https://upload.wikimedia.org/wikipedia/commons/c/cb/Flag_of_the_United_Arab_Emirates.svg
 capital: "[[Abu Dhabi]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 
 # United Arab Emirates

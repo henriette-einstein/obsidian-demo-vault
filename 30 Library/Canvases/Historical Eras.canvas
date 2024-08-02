@@ -1,0 +1,21 @@
+{
+	"nodes":[
+		{"id":"70a6dea1d23e147a","type":"text","text":"[[Early Middle Ages]]","x":-720,"y":-360,"width":220,"height":60},
+		{"id":"c37f8502386dea40","type":"text","text":"[[High Middle Ages]]","x":-720,"y":-260,"width":220,"height":60},
+		{"id":"415f9fa5ee0109a5","type":"text","text":"[[Late Middle Ages]]","x":-720,"y":-160,"width":220,"height":60},
+		{"id":"b46be3949f4f4ccc","type":"text","text":"[[Early Modern Period]]","x":-720,"y":20,"width":220,"height":60},
+		{"id":"354430d0cdc8cb66","type":"text","text":"[[Late Modern Period]]","x":-720,"y":120,"width":220,"height":60},
+		{"id":"b981c4e0760b85f8","type":"text","text":"[[Contemporary History]]","x":-720,"y":220,"width":220,"height":60},
+		{"id":"36ed53d3c673702c","type":"text","text":"[[Middle Ages]]","x":-1100,"y":-260,"width":250,"height":60},
+		{"id":"525975e261d33b9c","type":"text","text":"[[Modern Era]]","x":-1100,"y":120,"width":250,"height":60}
+	],
+	"edges":[
+		{"id":"30dc379f7dd6dc2e","fromNode":"36ed53d3c673702c","fromSide":"right","toNode":"70a6dea1d23e147a","toSide":"left"},
+		{"id":"f278673a76d70ebd","fromNode":"36ed53d3c673702c","fromSide":"right","toNode":"c37f8502386dea40","toSide":"left"},
+		{"id":"1e60037edd3d22c7","fromNode":"36ed53d3c673702c","fromSide":"right","toNode":"415f9fa5ee0109a5","toSide":"left"},
+		{"id":"a659ab04c18341d3","fromNode":"525975e261d33b9c","fromSide":"right","toNode":"b46be3949f4f4ccc","toSide":"left"},
+		{"id":"59d7e5d366e8530e","fromNode":"525975e261d33b9c","fromSide":"right","toNode":"354430d0cdc8cb66","toSide":"left"},
+		{"id":"3ab233bf295dd253","fromNode":"525975e261d33b9c","fromSide":"right","toNode":"b981c4e0760b85f8","toSide":"left"},
+		{"id":"918f8e8535aeacc4","fromNode":"36ed53d3c673702c","fromSide":"bottom","toNode":"525975e261d33b9c","toSide":"top"}
+	]
+}

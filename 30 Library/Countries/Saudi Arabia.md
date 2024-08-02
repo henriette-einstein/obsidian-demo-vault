@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+created: 2024-04-18
+type: "[[Countries]]"
 location: 24.7136,46.6753
 flag: https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/Flag_of_Saudi_Arabia.svg/1280px-Flag_of_Saudi_Arabia.svg.png
 capital: "[[Riyadh]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 
 # Saudi Arabia
@@ -64,9 +64,12 @@ The discovery of oil in 1938 transformed Saudi Arabia from a desert kingdom into
 
 ### Key Players
 
-- **National Oil Companies**: Saudi Aramco, one of the largest companies in the world by revenue.
+- **National Oil Companies**: [[Saudi Aramco]], one of the largest companies in the world by revenue.
 - **International Oil Companies in the Region**: Various partnerships and agreements with international oil companies, though Aramco maintains a dominant position.
 
+### Oil Fields
+- [[Dammam No. 7]]: First discovered oil field in Saudi Arabia
+- [[Ghawar Field]]: The largest oil field in the world
 ## Geopolitical Influence
 
 - **Regional Politics**: Saudi Arabia's oil wealth has given it significant influence in Middle Eastern politics, often positioning it as a counterbalance to Iran.
@@ -79,24 +82,14 @@ Saudi Arabia faces challenges related to its heavy economic dependency on oil, i
 ## Maps and Diagrams
 
 ```mapview
-{"name":"Default","mapZoom":4,"centerLat":24.686952411999155,"centerLng":46.71386718750001,"query":"path:\"30 Library/Countries/Saudi Arabia.md\"","chosenMapSource":0,"showLinks":false,"linkColor":"red"}
-```
-
-```mapview
-{"name":"Default","mapZoom":4,"centerLat":24.686952411999155,"centerLng":46.71386718750001,"query":"path:\"$filename$\"","chosenMapSource":0,"lock":false,"showLinks":false,"linkColor":"red"}
-```
-
-```mapview
-{"name":"Default","mapZoom":5,"centerLat":30.467614102257855,"centerLng":47.109375,"query":"path:\"30 Library/Countries/Saudi Arabia.md\"","chosenMapSource":2,"showLinks":false,"linkColor":"red"}
+{"name":"Default","mapZoom":4,"centerLat":23.40276490540795,"centerLng":47.02148437500001,"query":"path:\"30 Library/Countries/Saudi Arabia.md\"","chosenMapSource":0,"lock":false,"showLinks":false,"linkColor":"red"}
 ```
 
 ## See also 
 
-1. [Saudi Arabia on Wikipedia](https://en.wikipedia.org/wiki/Saudi_Arabia)
-2. [Saudi Arabia on CIA World Factbook](https://www.cia.gov/the-world-factbook/countries/saudi-arabia/)
-
-## References
-
-- [Saudi Aramco](https://www.saudiaramco.com/)
+- [Saudi Arabia on Wikipedia](https://en.wikipedia.org/wiki/Saudi_Arabia)
+- [Saudi Arabia on CIA World Factbook](https://www.cia.gov/the-world-factbook/countries/saudi-arabia/)
+- [[Saudi Aramco]]
+- [Energy in Saudi Arabia - Wikipedia](https://en.wikipedia.org/wiki/Energy_in_Saudi_Arabia)
 - [Vision 2030](https://vision2030.gov.sa/)
-- [OPEC](https://www.opec.org/opec_web/en/about_us/169.htm)
+- [[OPEC]]

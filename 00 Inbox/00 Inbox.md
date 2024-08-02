@@ -1,7 +1,5 @@
 ---
 up: "[[Home]]"
-tags:
-  - Type/Section
 created: 2024-03-06
 label: Inbox
 description: Newly captured notes that are not organized yet
@@ -23,4 +21,4 @@ sort created
 - [[Recent Notes|Recently created notes]], 
 - [[Recent Highlights|Recently imported Highlights]]
 - [[Untyped Notes|Untyped Notes]] 
-- [[Uncategorized Notes|Uncategorized Notes]]
+- [[Notes without MOCs and Up Reference|Uncategorized Notes]]

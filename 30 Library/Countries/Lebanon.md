@@ -1,11 +1,9 @@
 ---
 up: 
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
-categories: 
+type: "[[Countries]]"
 created: 2024-04-11
+mocs:
+  - "[[M - Countries in the Middle East]]"
 capital: "[[Beirut]]"
 location: 33.8750629,35.843409
 flag: https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Flag_of_Lebanon.svg/1280px-Flag_of_Lebanon.svg.png

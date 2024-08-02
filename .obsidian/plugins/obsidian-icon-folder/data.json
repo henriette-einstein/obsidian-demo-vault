@@ -1,9 +1,9 @@
 {
   "settings": {
-    "migrated": 4,
+    "migrated": 6,
     "iconPacksPath": ".obsidian/icons",
     "fontSize": 16,
-    "emojiStyle": "none",
+    "emojiStyle": "native",
     "iconColor": null,
     "recentlyUsedIcons": [
       "LiSparkles",
@@ -29,12 +29,14 @@
     "iconsInLinksEnabled": true,
     "debugMode": false,
     "iconInFrontmatterFieldName": "icon",
-    "iconColorInFrontmatterFieldName": "iconColor"
+    "iconColorInFrontmatterFieldName": "iconColor",
+    "iconInTitlePosition": "above",
+    "lucideIconPackType": "native"
   },
-  "00 Inbox": "LiInbox",
   "10 Calendar": "LiCalendar",
   "90 System": "LiCog",
   "30 Library": "LiLibrary",
   "20 Atlas": "LiTags",
-  "40 Highlights": "LiSparkles"
+  "00 Inbox": "LiInbox",
+  "40 Sources": "LiSparkles"
 }

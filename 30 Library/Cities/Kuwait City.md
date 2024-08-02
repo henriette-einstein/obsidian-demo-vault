@@ -1,8 +1,9 @@
 ---
-tags:
-  - Type/City
-country: "[[Kuwait]]"
+type: "[[Cities]]"
 created: 2024-04-20
+mocs:
+  - "[[M - Cities in the Middle East]]"
+country: "[[Kuwait]]"
 location: 29.3759,47.9774
 ---
 

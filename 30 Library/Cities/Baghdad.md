@@ -1,14 +1,13 @@
 ---
-up: "[[Cities]]"
-tags:
-  - Type/City
-categories: 
+type: "[[Cities]]"
+mocs:
+  - "[[M - Cities in the Middle East]]"
 created: 2024-04-09
 location: 33.3061701,44.3872213
 country: "[[Iraq]]"
 ---
 ```mapview
-{"name":"Default","mapZoom":5,"centerLat":33.284619968887675,"centerLng":44.40673828125,"query":"name:\"Baghdad\"","chosenMapSource":0,"showLinks":false,"linkColor":"red"}
+{"name":"Default","mapZoom":4,"centerLat":31.052933985705163,"centerLng":50.27343750000001,"query":"name:\"Baghdad\"","chosenMapSource":0,"lock":true,"showLinks":false,"linkColor":"red"}
 ```
 # [[Baghdad]]
 

@@ -1,7 +1,5 @@
 ---
-up: "[[Cities]]"
-tags:
-  - Type/City
+type: "[[Cities]]"
 location: 41.0082,28.9784
 country: "[[Turkey]]"
 related:

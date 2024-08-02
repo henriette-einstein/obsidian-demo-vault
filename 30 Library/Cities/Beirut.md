@@ -1,10 +1,10 @@
 ---
-up: "[[Cities]]"
-tags:
-  - Type/City
+type: "[[Cities]]"
 created: 2024-04-16
 location: 33.8938,35.5097
 country: "[[Lebanon]]"
+mocs:
+  - "[[M - Cities in the Middle East]]"
 ---
 Beirut is the capital and largest city of Lebanon, renowned for its rich history and vibrant cultural scene. Strategically located on a peninsula at the midpoint of Lebanon's Mediterranean coast, Beirut serves as the country’s largest and primary seaport.
 

@@ -1,16 +1,12 @@
 ---
 up: "[[30 Library]]"
-tags:
-  - Type/Tagpage
 label: Events
 description: Notes about Events
 created: 2024-04-10
-aliases:
-  - "#Type/Event"
 ---
-# [[30 Library]] > [[Events]]
+# [[Events]]
 ```dataview
-list from !"90 System"
-where econtains(file.etags, this.aliases[0])
+table start, end from !"90 System" and !outgoing([[]])
+where type = [[]]
 sort file.name
 ```

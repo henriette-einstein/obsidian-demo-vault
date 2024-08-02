@@ -1,12 +1,12 @@
 ---
-up: "[[Oil Producing Countries in the Middle East]]"
-tags:
-  - Type/Country
-types:
-  - "[[Countries]]"
+up: "[[M - Oil Producing Countries in the Middle East]]"
+type: "[[Countries]]"
+created: 2024-04-18
 location: 29.3759,47.9774
 flag: https://upload.wikimedia.org/wikipedia/commons/a/aa/Flag_of_Kuwait.svg
 capital: "[[Kuwait City]]"
+mocs:
+  - "[[M - Countries in the Middle East]]"
 ---
 
 # Kuwait

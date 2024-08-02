@@ -1,11 +1,9 @@
 ---
-up: "[[Timelines]]"
-tags:
-  - Type/Timeline
-categories:
-  - "[[History of the Middle East]]"
-  - "[[History of the Oil Industry]]"
+type: "[[Timelines]]"
 created: 2024-04-10
+mocs:
+  - "[[M - History of the Middle East]]"
+  - "[[M - History of the Oil Industry]]"
 ---
 # [[Timeline Oil in the Middle East]]
 
@@ -16,6 +14,8 @@ created: 2024-04-10
 - The drilling team under [[George Bernard Reynolds]] strikes oil in [[Iran|Persia]]
 **1909**
 - The [[Anglo-Persian Oil Company]] (APOC) is founded following the discovery of the oil field in Persia
+**1911**
+- [[Agadir Crisis]] from July to November 1911
 **1914**
 - Start of [[World War I]]
 - The British government buys 51% of the shares of [[Anglo-Persian Oil Company|APOC]]
